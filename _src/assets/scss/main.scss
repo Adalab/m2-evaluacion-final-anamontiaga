@@ -3,17 +3,50 @@
 .page {
   margin: 0px;
   padding: 30px;
+  &__title {
+    font-family: $font-family-primary;
+    font-size: 30px;
+  }
   &__search--film {
     width: 500px;
     height: 40px;
+    padding-left: 15px;
+    font-size: 20px;
   }
   &__search--button {
     width: 100px;
-    height: 40px;
+    height: 45px;
     box-sizing: border-box;
     font-family: $font-family-primary;
     background-color: $color-button;
     color: $color-white;
     font-size: 24px;
+    margin-left: 15px;
+  }
+  &__form {
+    display: flex;
+  }
+  &__main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    height: 100vh;
+  }
+  &__favorites__films {
+    width: 40%;
+    padding-left: 0;
+  }
+  &__results {
+    list-style: none;
+    width: 60%;
+    padding-left: 0;
+    &--list {
+      background-color: $color-background-films;
+    }
+    &--name {
+      color: $color-title-film;
+      font-family: $font-family-primary;
+      font-size: 24px;
+    }
   }
 }

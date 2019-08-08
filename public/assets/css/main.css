@@ -3,19 +3,66 @@
   padding: 30px;
 }
 
+.page__title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+}
+
 .page__search--film {
   width: 500px;
   height: 40px;
+  padding-left: 15px;
+  font-size: 20px;
 }
 
 .page__search--button {
   width: 100px;
-  height: 40px;
+  height: 45px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   background-color: #a00957;
   color: white;
+  font-size: 24px;
+  margin-left: 15px;
+}
+
+.page__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-top: 15px;
+  height: 100vh;
+}
+
+.page__favorites__films {
+  width: 40%;
+  padding-left: 0;
+}
+
+.page__results {
+  list-style: none;
+  width: 60%;
+  padding-left: 0;
+}
+
+.page__results--list {
+  background-color: pink;
+}
+
+.page__results--name {
+  color: #602730;
+  font-family: "Open Sans", sans-serif;
   font-size: 24px;
 }
 
