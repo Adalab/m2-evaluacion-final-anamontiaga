@@ -1,2 +1,22 @@
+.page {
+  margin: 0px;
+  padding: 30px;
+}
+
+.page__search--film {
+  width: 500px;
+  height: 40px;
+}
+
+.page__search--button {
+  width: 100px;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  background-color: #a00957;
+  color: white;
+  font-size: 24px;
+}
 
 /*# sourceMappingURL=main.css.map */

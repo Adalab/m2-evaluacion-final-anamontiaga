@@ -1,1 +1,19 @@
-// @import 'core/variables';
+@import "core/variables";
+
+.page {
+  margin: 0px;
+  padding: 30px;
+  &__search--film {
+    width: 500px;
+    height: 40px;
+  }
+  &__search--button {
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
+    font-family: $font-family-primary;
+    background-color: $color-button;
+    color: $color-white;
+    font-size: 24px;
+  }
+}
