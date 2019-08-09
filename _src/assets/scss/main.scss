@@ -55,6 +55,14 @@
 
 // FAVORITOS
 
+.page__favorites__films {
+  list-style: none;
+
+  &--image {
+    height: 200px;
+  }
+}
+
 .film--is--favorite {
   background-color: $color-button;
   .page__results--name {

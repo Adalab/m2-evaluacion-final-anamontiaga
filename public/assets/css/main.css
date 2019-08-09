@@ -68,6 +68,14 @@
   font-size: 24px;
 }
 
+.page__favorites__films {
+  list-style: none;
+}
+
+.page__favorites__films--image {
+  height: 200px;
+}
+
 .film--is--favorite {
   background-color: #a00957;
 }
