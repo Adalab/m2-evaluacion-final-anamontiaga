@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .page {
   margin: 0px;
   padding: 30px;
@@ -6,6 +8,16 @@
 .page__title {
   font-family: "Open Sans", sans-serif;
   font-size: 30px;
+  color: white;
+}
+
+.page__title--container {
+  height: 100px;
+  background-color: #000000;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
 }
 
 .page__search--film {
@@ -13,6 +25,7 @@
   height: 40px;
   padding-left: 15px;
   font-size: 20px;
+  border-bottom: 2px solid black;
 }
 
 .page__search--button {
@@ -22,7 +35,7 @@
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   background-color: #a00957;
-  color: white;
+  color: #ffffff;
   font-size: 24px;
   margin-left: 15px;
   cursor: context-menu;
@@ -32,6 +45,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .page__main {
@@ -56,24 +72,81 @@
   width: 60%;
   padding-left: 0;
   cursor: copy;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .page__results--list {
   background-color: pink;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 20px;
+  width: 200px;
+  height: 340px;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 .page__results--name {
   color: #602730;
   font-family: "Open Sans", sans-serif;
   font-size: 24px;
+  text-align: center;
+}
+
+.page__results--image {
+  width: 170px;
 }
 
 .page__favorites__films {
   list-style: none;
+  border-right: 1px solid #bbbaba;
+  margin-right: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .page__favorites__films--image {
   height: 200px;
+  margin-bottom: 20px;
+}
+
+.page__favorites__films--name {
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+}
+
+.page__favorites__films--item {
+  background-color: #000000;
+  width: 150px;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 50px;
 }
 
 .film--is--favorite {
@@ -81,6 +154,12 @@
 }
 
 .film--is--favorite .page__results--name {
+  color: pink;
+}
+
+.film--is--favorite .page__results--name::before {
+  content: " ❤︎ ";
+  font-size: 24px;
   color: pink;
 }
 

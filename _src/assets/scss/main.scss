@@ -6,12 +6,22 @@
   &__title {
     font-family: $font-family-primary;
     font-size: 30px;
+    color: white;
+    &--container {
+      height: 100px;
+      background-color: $color-black;
+      margin-bottom: 20px;
+      padding-top: 20px;
+      padding-left: 20px;
+      border-radius: 10px;
+    }
   }
   &__search--film {
     width: 500px;
     height: 40px;
     padding-left: 15px;
     font-size: 20px;
+    border-bottom: 2px solid black;
   }
   &__search--button {
     width: 100px;
@@ -26,6 +36,7 @@
   }
   &__form {
     display: flex;
+    justify-content: center;
   }
   &__main {
     display: flex;
@@ -42,13 +53,27 @@
     width: 60%;
     padding-left: 0;
     cursor: copy;
+    display: flex;
+    flex-wrap: wrap;
     &--list {
       background-color: $color-background-films;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      width: 200px;
+      height: 340px;
+      margin-bottom: 20px;
+      margin-right: 20px;
     }
     &--name {
       color: $color-title-film;
       font-family: $font-family-primary;
       font-size: 24px;
+      text-align: center;
+    }
+    &--image {
+      width: 170px;
     }
   }
 }
@@ -57,15 +82,40 @@
 
 .page__favorites__films {
   list-style: none;
-
+  border-right: 1px solid rgb(187, 186, 186);
+  margin-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
   &--image {
     height: 200px;
+    margin-bottom: 20px;
+  }
+  &--name {
+    color: $color-white;
+    font-family: $font-family-primary;
+    text-align: center;
+  }
+  &--item {
+    background-color: $color-black;
+    width: 150px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 50px;
   }
 }
 
 .film--is--favorite {
   background-color: $color-button;
+
   .page__results--name {
     color: $color-background-films;
+    &::before {
+      content: " ❤︎ ";
+      font-size: 24px;
+      color: $color-background-films;
+    }
   }
 }

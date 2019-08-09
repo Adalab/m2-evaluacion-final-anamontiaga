@@ -9,6 +9,21 @@ const listFilms = document.querySelector(".page__results");
 const favFilms = [];
 let searchedFilms = [];
 
+// LOCAL STORAGE
+
+// Guardo los datos
+function saveData() {
+  localStorage.setItem("favfilms", JSON.stringify(favFilms));
+}
+
+// Me los traigo
+// function catchData() {
+//   const catchInfo = JSON.parse(localStorage.getItem("favfilms"));
+//   if (catchInfo !== null) {
+//     favFilms = catchInfo;
+//   }
+// }
+
 // función que hace todas las cosas que quiero al hacer click en favoritos
 function handleFav(event) {
   const currentFilm = event.currentTarget;
@@ -20,29 +35,22 @@ function handleFav(event) {
   // le añado una clase para que se convierta en favoritos al hacer click
   currentFilm.classList.toggle("film--is--favorite");
 
-  //   if (currentFilm.classList.contains("film--is--favorite") === true) {
-  //     // añademela al array si se queda con la clase
-  //     // pero añademela sólo si el array aún no lo tiene (===false), para que no se añada cada vez que hago click
-  //     if (favFilms.includes(searchedFilms[clickedIndex]) === false) {
-  //       favFilms.push(searchedFilms[clickedIndex]);
-  //     }
-  //   } else {
-  //     // quítamela del array si no se queda con la clase
-  //     const index = favFilms.indexOf(searchedFilms[clickedIndex]);
-  //     // si el índice existe (es mayor que -1)
-  //     if (index > -1) {
-  //       favFilms.splice(index, 1); // situate en el elemento y recortame ese mismo
-  //     }
-  //   }
-  // bucle para que me pinte favoritos en su contenedor
   let htmlFavCode = "";
 
   for (const favFilm of favFilms) {
-    htmlFavCode += `<li class"page__favorites__films--item"><img src="${favFilm.show.image}" alt="${favFilm.show.name}" class="page__favorites__films--image"><h3 class="page__favorites__films--name">${favFilm.show.name}</h3></li>`;
+    htmlFavCode += `<li class="page__favorites__films--item"><img src="${favFilm.show.image}" alt="${favFilm.show.name}" class="page__favorites__films--image"><h3 class="page__favorites__films--name">${favFilm.show.name}</h3></li>`;
   }
 
   favFilmContainer.innerHTML = htmlFavCode;
 
+  // para quitar los films que ya estén en favoritos
+  const currentFavFilm = document.querySelector("page__favorites__films--item");
+
+  if (currentFilm.classList.contains("film--is--favorite") === false) {
+    currentFavFilm.style = "display: none;";
+  }
+
+  saveData(favFilms);
   console.log(favFilms);
 }
 
@@ -89,5 +97,8 @@ const getFilmInfo = function(ev) {
       activateFavs();
     });
 };
+
+// catchData();
+// lo ejecuto aqui para que funcione al actualizar
 
 btn.addEventListener("click", getFilmInfo);
