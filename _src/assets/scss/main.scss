@@ -22,6 +22,7 @@
     color: $color-white;
     font-size: 24px;
     margin-left: 15px;
+    cursor: context-menu;
   }
   &__form {
     display: flex;
@@ -40,6 +41,7 @@
     list-style: none;
     width: 60%;
     padding-left: 0;
+    cursor: copy;
     &--list {
       background-color: $color-background-films;
     }
@@ -48,5 +50,14 @@
       font-family: $font-family-primary;
       font-size: 24px;
     }
+  }
+}
+
+// FAVORITOS
+
+.film--is--favorite {
+  background-color: $color-button;
+  .page__results--name {
+    color: $color-background-films;
   }
 }

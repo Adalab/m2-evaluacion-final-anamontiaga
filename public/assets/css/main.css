@@ -25,6 +25,7 @@
   color: white;
   font-size: 24px;
   margin-left: 15px;
+  cursor: context-menu;
 }
 
 .page__form {
@@ -54,6 +55,7 @@
   list-style: none;
   width: 60%;
   padding-left: 0;
+  cursor: copy;
 }
 
 .page__results--list {
@@ -64,6 +66,14 @@
   color: #602730;
   font-family: "Open Sans", sans-serif;
   font-size: 24px;
+}
+
+.film--is--favorite {
+  background-color: #a00957;
+}
+
+.film--is--favorite .page__results--name {
+  color: pink;
 }
 
 /*# sourceMappingURL=main.css.map */
