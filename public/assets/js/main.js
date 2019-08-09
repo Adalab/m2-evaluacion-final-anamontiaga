@@ -8,12 +8,33 @@ const listFilms = document.querySelector(".page__results");
 // array para guardar los favoritos
 const favFilms = [];
 
+// función que hace todas las cosas que quiero al hacer click en favoritos
 function handleFav(event) {
   const currentFilm = event.currentTarget;
+
+  // cojo los datos que quiero guardar en favoritos con un atributo
+  const currentFilmName = currentFilm.getAttribute("data-name");
+  const currentFilmImage = currentFilm.getAttribute("data-image");
+
   // le añado una clase para que se convierta en favoritos al hacer click
   currentFilm.classList.toggle("film--is--favorite");
 
-  console.log(currentFilm);
+  if (currentFilm.classList.contains("film--is--favorite") === true) {
+    // añademela al array si se queda con la clase
+    // pero añademela sólo si el array aún no lo tiene (===false), para que no se añada cada vez que hago click
+    if (favFilms.includes(currentFilmName) === false) {
+      favFilms.push(currentFilmName);
+    }
+  } else {
+    // quítamela del array si no se queda con la clase
+    const index = favFilms.indexOf(currentFilmName);
+    // si el índice existe (es mayor que -1)
+    if (index > -1) {
+      favFilms.splice(index, 1); // situate en el elemento y recortame ese mismo
+    }
+  }
+
+  console.log(favFilms);
 }
 
 function activateFavs() {
@@ -53,7 +74,7 @@ const getFilmInfo = function(ev) {
           imgSrc = data[i].show.image.medium;
         }
 
-        listFilms.innerHTML += `<li class="page__results--list"><img src="${imgSrc}" alt="${data[i].show.name}" class="page__results--image"><br/><h3 class="page__results--name">${data[i].show.name}</h3></li>`;
+        listFilms.innerHTML += `<li class="page__results--list" data-name="${data[i].show.name}" data-image="${imgSrc}"><img src="${imgSrc}" alt="${data[i].show.name}" class="page__results--image"><br/><h3 class="page__results--name">${data[i].show.name}</h3></li>`;
       }
 
       activateFavs();
@@ -61,34 +82,5 @@ const getFilmInfo = function(ev) {
 };
 
 btn.addEventListener("click", getFilmInfo);
-
-// cuando click en el resultado me añade una clase en la que el título es del color del fondo y viceversa
-
-// const resultFilmName = document.querySelectorAll(".page__results--name");
-
-// function handleFav(event) {
-//   const currentFilm = event.currentTarget;
-//   console.log(currentFilm);
-// }
-
-// function activateFavs() {
-//   const resultFilm = document.querySelectorAll(".page__results--list");
-//   for (const item of resultFilm) {
-//     item.addEventListener("click", handleFav);
-//   }
-// }
-
-// activateFavs();
-
-// function selectFilm() {
-//   for (const item of resultFilm) {
-//     resultFilm.style = "background-color: #a00957;";
-// for (const item of resultFilmName) {
-//   resultFilmName.style = "color: pink;";
-// }
-//   }
-// }
-
-// resultFilm.addEventListener("click", selectFilm);
 
 //# sourceMappingURL=main.js.map
