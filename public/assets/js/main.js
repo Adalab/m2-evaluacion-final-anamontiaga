@@ -1,8 +1,10 @@
 "use strict";
 
+// 1º
 const btn = document.querySelector(".page__search--button");
 const listFilms = document.querySelector(".page__results");
 const favFilmContainer = document.querySelector(".page__favorites__films");
+const resetBtn = document.querySelectorAll(".page__favorites__films--btn");
 
 let favFilms = [];
 let searchedFilms = [];
@@ -13,14 +15,18 @@ function saveData() {
   localStorage.setItem("favfilms", JSON.stringify(favFilms));
 }
 
+// Si en el LS hay algo, me lo metes en el array de nuevo, osea, me los dejas ahí
 function catchData() {
   const catchInfo = JSON.parse(localStorage.getItem("favfilms"));
   if (catchInfo !== null) {
     favFilms = catchInfo;
-    paintFavs();
+    paintFavs(); // y me los vuelves a pintar
   }
 }
 
+// 5º Añadimos clase en el filme que pinchamos para cambiar color y generamos un índice para meter los filmes en el array de favFilms.
+// Además los pintamos e la lista de favoritos
+// Además salvamos los datos
 function handleFav(event) {
   const currentFilm = event.currentTarget;
   const clickedIndex = parseInt(currentFilm.dataset.index);
@@ -30,25 +36,31 @@ function handleFav(event) {
 
   paintFavs();
 
-  const currentFavFilm = document.querySelector(".page__favorites__films--item");
-
-  if (currentFilm.classList.contains("film--is--favorite") === false) {
-    currentFavFilm.style = "display: none;";
-  }
-
   saveData(favFilms);
 }
 
+// 6º Pintamos los favoritos, leyendo el array de favoritos
 function paintFavs() {
   let htmlFavCode = "";
 
   for (const favFilm of favFilms) {
-    htmlFavCode += `<li class="page__favorites__films--item"><img src="${favFilm.show.image}" alt="${favFilm.show.name}" class="page__favorites__films--image"><h3 class="page__favorites__films--name">${favFilm.show.name}</h3></li>`;
+    htmlFavCode += `<li class="page__favorites__films--item"><button class="page__favorites__films--btn">x</button><img src="${favFilm.show.image}" alt="${favFilm.show.name}" class="page__favorites__films--image"><h3 class="page__favorites__films--name">${favFilm.show.name}</h3></li>`;
   }
 
   favFilmContainer.innerHTML = htmlFavCode;
 }
 
+function resetFav() {
+  const currentFavFilm = event.currentTarget;
+  const favFilm = document.querySelectorAll(".page__favorites__films--item");
+  if (currentFavFilm.classList.contains("page__favorites__films--item") === true) {
+    if (favFilmContainer.includes(currentFavFilm) === true) {
+      currentFavFilm.style = "display:none;";
+    }
+  }
+}
+
+// 4ª cambiamos el color a los filmes clickados( al <li> y al <h3>)
 function activateFavs() {
   const films = document.querySelectorAll(".page__results--list");
   const filmsTitles = document.querySelectorAll(".page__results--name");
@@ -60,12 +72,14 @@ function activateFavs() {
     title.parentElement.addEventListener("click", handleFav);
   }
 }
-
+// 2º
 const getFilm = function() {
   let inputFilm = document.querySelector(".page__search--film");
   inputFilm = inputFilm.value;
   return `http://api.tvmaze.com/search/shows?q=${inputFilm}`;
 };
+
+// 3º
 
 const getFilmInfo = function(ev) {
   ev.preventDefault();
@@ -91,5 +105,7 @@ const getFilmInfo = function(ev) {
 catchData();
 
 btn.addEventListener("click", getFilmInfo);
+
+resetBtn.addEventListener("click", resetFav);
 
 //# sourceMappingURL=main.js.map
