@@ -18,10 +18,10 @@ Al hacer clic sobre el botón de 'Buscar', nuestra aplicación debe conectarse a
 Algunas de las series que obtenemos en los resultados no tienen imagen. En ese caso debemos mostrar una imagen de relleno. Podemos crear una imagen de relleno con el servicio de placeholder.com donde en la propia URL indicamos el tamaño, colores, texto:
 https://via.placeholder.com/210x295/ffffff/666666/?text=TV
 
-## Favoritos
+## 3. Favoritos
 Una vez aparecen los resultados de búsqueda, podremos indicar cuáles son nuestras series favoritas. Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se intercambian. Además, debes crear un listado (array) con las series favoritas que almacenamos en una variable. Este listado lo mostraremos en la parte izquierda de la pantalla, debajo del formulario de búqueda. Para terminar, si volvemos a realizar una nueva búsqueda, los favoritos se irán acumulando en nuestra lista.
 
-## Almacenamiento local
+## 4.Almacenamiento local
 Vamos a almacenar el listado de favoritos en el localStorage. De esta forma, al recargar la página
 el listado de favoritos se mantiene.
 
