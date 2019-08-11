@@ -1,72 +1,36 @@
-![Adalab](_src/assets/images/logo-adalab-80px.png)
-# Adalab web starter kit
-Ahoy! Esta es nuestro Starter Kit en node/gulp para este primer contacto con el desarrollo web
-Incluye SCSS, un sistema de plantillas HTMl y un web server.
+# Ejercicio de evaluación final ‒ Módulo 2
 
-## Guía de inicio rápido
-Necesitarás instalar [Node.js](https://nodejs.org/) y [Gulp](https://gulpjs.com) para trabajar con este Starter Kit, luego:
-1. Descarga o clona el repositorio
-2. Instala las dependencias locales con `$ npm install`
-3. Arranca el kit con `$ gulp`
+El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, dondedemostraremos los conocimientos de JavaScript a dquiridos durante el módulo. El ejercicio también tiene una parte de maquetación con HTML y Sass, os recomendamos dedicar esfuerzo a la
+maquetación una vez terminada la parte de JavaScript, ya que los criterios de evaluación están relacionados con esta última.
 
-## Espera, ¿esto se hace siempre?
-> ### Solo una vez al principio en cada ordenador que utilicemos:
-- Instalamos node
-- Instalamos el comando de gulp de forma global para poder usarlo desde cualquier carpeta usando `npm install --global gulp-cli`
+Vamos de definir los distintos hitos del ejercicio:
 
-> ### Cada vez que descarguemos o clonemos un repo:
-- `npm install` para instalar los paquetes necesarios para convertir Sass a CSS, minizarlo, etc.
+## 1. Estructura básica
+En primer lugar vamos a realizar una estructura básica sobre este modelo. No nos centramos en
+medidas, colores ni tipografía hasta un hito posterior.
+La aplicación de búsqueda de series consta de dos partes
+1. Un campo de texto y un botón para buscar series por su título
+2. Un listado de resultados de búsqueda donde aparece el cartel de la serie y el título
 
-> ### Cada vez que estemos trabajando con nuestro código:
-- Desde nuestra terminal, ejecutamos el comando `gulp` para que realice la tarea por defecto, que en el caso del `gulpfile.js` que tenemos en adalab-web-starter-kit estará pendiente de nuestros archivos Sass, html y JavaScript y los compilará, minificará y/o recargará el servidor cada vez que hagamos un cambio
+## 2. Búsqueda
+Al hacer clic sobre el botón de 'Buscar', nuestra aplicación debe conectarse al API abierto de TVMaze para búsqueda de series. Os recomendamos echar un vistazo al JSON que devuelve una petición de búsqueda para ver qué datos de los que nos devuelve necesitamos. Para construir la URL de búsqueda necesitaremos recoger el texto que ha introducido el usuario en el campo de búsqueda. Por cada show contenido en el resultado de búsqueda debemos pintar una tarjeta donde mostramos una imagen de la serie y el título.
 
-## Tareas de gulp incluidas
-### Inicio de un web server para desarrollo
-```
-$ gulp
-```
-Lanza un webserver con BrowserSync y varios watchers estarán pendientes de los archivos SCSS/JS/HTML, en la carpeta **public/**, para recargar el navegador cuando se necesite.
+Algunas de las series que obtenemos en los resultados no tienen imagen. En ese caso debemos mostrar una imagen de relleno. Podemos crear una imagen de relleno con el servicio de placeholder.com donde en la propia URL indicamos el tamaño, colores, texto:
+https://via.placeholder.com/210x295/ffffff/666666/?text=TV
 
-### Versión lista para subir a producción
-```
-$ gulp docs
-```
-En la carpeta **docs/** genera los CSS y JS minimizados y sin sourcemaps listos para subir al repo y activar GitHub Pages en `master/docs`.
+## Favoritos
+Una vez aparecen los resultados de búsqueda, podremos indicar cuáles son nuestras series favoritas. Para ello, al hacer clic sobre un resultado el color de fondo y el de fuente se intercambian. Además, debes crear un listado (array) con las series favoritas que almacenamos en una variable. Este listado lo mostraremos en la parte izquierda de la pantalla, debajo del formulario de búqueda. Para terminar, si volvemos a realizar una nueva búsqueda, los favoritos se irán acumulando en nuestra lista.
 
+## Almacenamiento local
+Vamos a almacenar el listado de favoritos en el localStorage. De esta forma, al recargar la página
+el listado de favoritos se mantiene.
 
-## Estructura del proyecto
-Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archivos a generar/vigilar.
+### BONUS: Afinar la maquetación
+Una vez terminada la parte de interacción, podemos centrarnos en la parte de maquetación donde tenéis libertad para decidir los estilo. En cualquier caso os dejamos una propuesta gráfica.
 
-La estructura de carpetas tiene esta pinta:
-```
-/
-`- _src
-   |- assets
-   |  |- icons
-   |  |- images
-   |  |- js
-   |  `- scss
-   |     `- core
-   |
-   `- templates
-      `- partials
+### BONUS: Borrar favoritos
+Como bonus, os proponemos la opción de borrar favoritos. De esta forma, al hacer clic sobre el icono de la 'x' al lado de los favoritos, podremos borrarlos (de nuestra lista y del localStorage).
+Para terminar de rematar nuestra app de series, nos gustaría poder añadir/quitar favorito al hacer clic sobre una serie. Y que, si realizamos una nueva búsqueda y sale una serie que ya es favorita, aparezca ya resaltada en los resultados de búsqueda (con colores de fondo y texto intercambiados).
 
-```
+Y ya sería fantástico si al final de la lista de favoritos tenemos un botón para borrarlos todos.
 
-## HTML
-Viene incluído el paquete [**gulp-html-partial**](https://www.npmjs.com/package/gulp-html-partial) que nos va a permitir tener un sistema de plantillas html
-
-## Imágenes e iconos
-Tenemos en **_src/** una carpeta para las imágenes del proyecto y una para los iconos como el favicon o los iconos de dispositivos móviles. Estos últimos se generan en la raíz de las carpetas **public/** y **docs/**
-
-## CSS
-Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las mediaqueries al final del documento css.
-
-## JS
-Podemos usar parciales de JS: en el JSON de configuración, **config.json** especificamos los archivos JS que utilizamos y en el orden que deben procesarse.
-
-## ¿Cómo actualizo si tengo una versión anterior?
-En principio puedes descargar todos los archivos fuera de **_src/** y sustituir los de tu proyecto. Además deberías replicar la estructura de carpetas dentro de **_src/**.
-
-## Falta algo?
-Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
