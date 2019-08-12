@@ -110,6 +110,13 @@
   width: 170px;
 }
 
+.container-favs--title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-left: 50px;
+}
+
 .page__favorites__films {
   list-style: none;
   border-right: 1px solid #bbbaba;
