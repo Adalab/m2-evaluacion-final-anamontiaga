@@ -81,8 +81,15 @@ const getFilmInfo = function(ev) {
           data[i].show.image = data[i].show.image.medium;
         }
 
-        listFilms.innerHTML += `<li class="page__results--list" data-index="${i}"><img src="${data[i].show.image}" alt="${data[i].show.name}" class="page__results--image"><h3 class="page__results--name">${data[i].show.name}</h3></li>`;
+        let recomendedText = "Recomendado";
+        if (data[i].show.language === "English") {
+          recomendedText = "Recomendado";
+        } else {
+          recomendedText = "";
+        }
+        listFilms.innerHTML += `<li class="page__results--list" data-index="${i}"><img src="${data[i].show.image}" alt="${data[i].show.name}" class="page__results--image"><h3 class="page__results--name">${data[i].show.name}</h3><p class="page__results--language">${data[i].show.language}</p><p>${recomendedText}</p></li>`;
       }
+
       searchedFilms = data;
       activateFavs();
     });
@@ -91,5 +98,17 @@ const getFilmInfo = function(ev) {
 catchData();
 
 btn.addEventListener("click", getFilmInfo);
+
+///....
+
+const logBtn = document.querySelector(".page--log--button");
+
+function logFavs(ev) {
+  ev.preventDefault();
+
+  console.log(`Tienes ${favFilms.length} favorito`);
+}
+
+logBtn.addEventListener("click", logFavs);
 
 //# sourceMappingURL=main.js.map
