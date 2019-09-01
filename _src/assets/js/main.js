@@ -35,8 +35,6 @@ function handleFav(event) {
     favFilms.push(searchedFilms[clickedIndex]);
   }
 
-  // Te animo a que en esta función compruebes si el favorito ya está entre los favoritos para que no sea añadido más de una vez. Esta es una de las cosas chungas del ejercicio por eso te lo digo.
-
   currentFilm.classList.toggle("film--is--favorite");
 
   paintFavs();
@@ -56,7 +54,6 @@ function paintFavs() {
   activeRemoveFav();
 }
 
-// intento de borrar favoritos
 function removeFav(ev) {
   let currentFavFilm = parseInt(ev.currentTarget.dataset.index);
   favFilms.splice(currentFavFilm, 1);
@@ -104,15 +101,8 @@ const getFilmInfo = function(ev) {
           data[i].show.image = data[i].show.image.medium;
         }
 
-        let recomendedText = "Recomendado";
-        if (data[i].show.language === "English") {
-          recomendedText = "Recomendado";
-        } else {
-          recomendedText = "";
-        }
-        listFilms.innerHTML += `<li class="page__results--list" data-index="${i}"><img src="${data[i].show.image}" alt="${data[i].show.name}" class="page__results--image"><h3 class="page__results--name">${data[i].show.name}</h3><p class="page__results--language">${data[i].show.language}</p><p>${recomendedText}</p></li>`;
+        listFilms.innerHTML += `<li class="page__results--list" data-index="${i}"><img src="${data[i].show.image}" alt="${data[i].show.name}" class="page__results--image"><h3 class="page__results--name">${data[i].show.name}</h3></li>`;
       }
-
       searchedFilms = data;
       activateFavs();
     });
@@ -122,23 +112,9 @@ catchData();
 
 btn.addEventListener("click", getFilmInfo);
 
-<<<<<<< HEAD
-///....
-
-const logBtn = document.querySelector(".page--log--button");
-
-function logFavs(ev) {
-  ev.preventDefault();
-
-  console.log(`Tienes ${favFilms.length} favorito`);
-}
-
-logBtn.addEventListener("click", logFavs);
-=======
 function activeRemoveFav() {
   const removeBtns = document.querySelectorAll(".page__favorites__films--btn");
   for (const removeBtn of removeBtns) {
     removeBtn.addEventListener("click", removeFav);
   }
 }
->>>>>>> d13ac0e87980733fe806454d6bf434db6d224dde
