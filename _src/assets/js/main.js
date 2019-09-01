@@ -31,7 +31,6 @@ function catchData() {
 function handleFav(event) {
   const currentFilm = event.currentTarget;
   const clickedIndex = parseInt(currentFilm.dataset.index);
-  // si el favorito ya esta en favFilms, no lo pushea.
   if (favFilms.includes(searchedFilms[clickedIndex]) === false) {
     favFilms.push(searchedFilms[clickedIndex]);
   }
