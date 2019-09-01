@@ -31,7 +31,11 @@ function catchData() {
 function handleFav(event) {
   const currentFilm = event.currentTarget;
   const clickedIndex = parseInt(currentFilm.dataset.index);
-  favFilms.push(searchedFilms[clickedIndex]);
+  // si el favorito ya esta en favFilms, no lo pushea.
+  if (favFilms.includes(searchedFilms[clickedIndex]) === false) {
+    favFilms.push(searchedFilms[clickedIndex]);
+  }
+
   // Te animo a que en esta función compruebes si el favorito ya está entre los favoritos para que no sea añadido más de una vez. Esta es una de las cosas chungas del ejercicio por eso te lo digo.
 
   currentFilm.classList.toggle("film--is--favorite");

@@ -31,13 +31,18 @@ function catchData() {
 function handleFav(event) {
   const currentFilm = event.currentTarget;
   const clickedIndex = parseInt(currentFilm.dataset.index);
-  favFilms.push(searchedFilms[clickedIndex]);
+  // si el favorito ya esta en favFilms, no lo pushea.
+  if (favFilms.includes(searchedFilms[clickedIndex]) === false) {
+    favFilms.push(searchedFilms[clickedIndex]);
+  }
+
+  // Te animo a que en esta función compruebes si el favorito ya está entre los favoritos para que no sea añadido más de una vez. Esta es una de las cosas chungas del ejercicio por eso te lo digo.
 
   currentFilm.classList.toggle("film--is--favorite");
 
   paintFavs();
 
-  saveData(favFilms);
+  saveData();
 }
 
 // 6º Pintamos los favoritos, leyendo el array de favoritos
@@ -49,7 +54,7 @@ function paintFavs() {
   }
 
   favFilmContainer.innerHTML = htmlFavCode;
-  removeAllFavs();
+  activeRemoveFav();
 }
 
 // intento de borrar favoritos
@@ -111,7 +116,7 @@ catchData();
 
 btn.addEventListener("click", getFilmInfo);
 
-function removeAllFavs() {
+function activeRemoveFav() {
   const removeBtns = document.querySelectorAll(".page__favorites__films--btn");
   for (const removeBtn of removeBtns) {
     removeBtn.addEventListener("click", removeFav);
